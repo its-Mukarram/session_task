@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        <record id="saleorder_form_inherit" model="ir.ui.view">
+            <field name="name">sale.order.form.inherit</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form" />
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='pricelist_id']" position="attributes">
+                    <attribute name="context">{'partner_id': partner_id, 'date_order':date_order}</attribute>
+                </xpath>
+            <xpath expr="/form/sheet/notebook/page/field[@name='order_line']/tree/field[@name='price_unit']" position="before">
+                    <field name="pricelist_id" context="{'partner_id': parent.partner_id, 'date_order':parent.date_order, 'product_id':product_template_id}"/>
+                </xpath>
+            </field>
+        </record>
+</odoo>
