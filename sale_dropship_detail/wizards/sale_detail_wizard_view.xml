@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="wizard_form_view" model="ir.ui.view">
+        <field name="name">sale.detail.wizard.form</field>
+        <field name="model">sale.detail.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Sale Purchase Wizard">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="partner_id" />
+                            <field name="is_dropship" />
+                        </group>
+                        <group>
+                            <field name="delivery_date" />
+                            <field name="sale_notes" />
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Products">
+                            <field name="product_ids" mode="tree">
+                                <tree string="product_view_tree"
+                                      editable="bottom">
+                                    <field name="product_id" />
+                                    <field name="quantity" />
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+                <footer>
+                    <button name="action_confirm" string="Confirm" type="object"
+                            class="btn-primary" data-hotkey="q" />
+                    <button string="Cancel" class="btn-secondary"
+                            special="cancel" data-hotkey="x" />
+                </footer>
+            </form>
+        </field>
+    </record>
+</odoo>
